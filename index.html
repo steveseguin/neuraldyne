@@ -3,125 +3,395 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Download - Digital Brain Snapshots & Virtual Twins</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Neuraldyne - Digital Consciousness Architecture</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #00c853;
+            --primary-dark: #009624;
+            --bg-dark: #0a0f0a;
+            --text-light: #e0e0e0;
+            --text-dark: #1a1a1a;
+            --gradient-dark: linear-gradient(135deg, rgba(0,25,0,0.95) 0%, rgba(10,15,10,0.98) 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            background-color: #121212;
-            color: #f0f0f0;
-        }
-        header {
-            padding: 40px;
-            text-align: center;
-            background-color: #212121;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #333;
-            padding: 20px;
-        }
-        nav a {
-            margin: 0 20px;
-            color: #f0f0f0;
-            text-decoration: none;
-            font-size: 1.2em;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #64ffda;
-        }
-        .hero {
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, #64ffda 0%, #1de9b6 100%);
-            color: #000;
-        }
-        .hero h2 {
-            font-size: 3em;
-            font-weight: 700;
-        }
-        .hero p {
-            font-size: 1.3em;
-            margin: 20px 0;
-        }
-        .hero a {
-            padding: 14px 28px;
-            background-color: #212121;
-            color: #64ffda;
-            text-decoration: none;
-            border-radius: 8px;
-            border: 2px solid #64ffda;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .hero a:hover {
-            background-color: #64ffda;
-            color: #000;
-        }
-        section {
-            padding: 50px 30px;
-            text-align: center;
-        }
-        section h3 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-        section p {
-            font-size: 1.1em;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             line-height: 1.6;
         }
-        footer {
-            padding: 25px;
-            text-align: center;
-            background-color: #212121;
-            color: #ccc;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        footer a {
-            color: #64ffda;
+
+        header {
+            background: var(--gradient-dark);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
+            color: var(--text-light);
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.5em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--gradient-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(0,200,83,0.15) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #00c853);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #b0b0b0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--primary);
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .btn:hover {
+            background: transparent;
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .features {
+            padding: 100px 0;
+            background: var(--bg-dark);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.03);
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .section-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #b0b0b0;
+        }
+
+        footer {
+            background: var(--gradient-dark);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Neural Download</h1>
-        <p>Your Mind. Your Legacy. Digitized.</p>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+                </svg>
+                <span class="logo-text">Neuraldyne</span>
+            </a>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#technology">Technology</a>
+                <a href="#process">Process</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
     </header>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#technology">Technology</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <div class="hero">
-        <h2>Preserve Your Mind Digitally</h2>
-        <p>Advanced neural modeling to immortalize your cognitive essence.</p>
-        <a href="#get-started">Start Your Journey</a>
-    </div>
-    <section id="about">
-        <h3>About Neural Download</h3>
-        <p>Leading-edge technology blending neuroscience and AI to capture and preserve human consciousness digitally.</p>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Pioneer Your Digital Evolution</h1>
+            <p>Experience the next frontier of human consciousness through our quantum-enhanced neural architecture. Neuraldyne's proprietary technology transforms cognitive patterns into immortal digital paradigms.</p>
+            <a href="#get-started" class="btn">Initialize Protocol</a>
+        </div>
     </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Advanced Capabilities</h2>
+                <p>Discover how Neuraldyne is defining the future of consciousness preservation and enhancement</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="#00c853" stroke-width="2">
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+                    </svg>
+                    <h3>Neural Preservation</h3>
+                    <p>Our proprietary quantum mapping captures your complete neural architecture, including memories, personality matrices, and cognitive patterns.</p>
+                </div>
+                <div class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="#00c853" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                    <h3>Quantum Integration</h3>
+                    <p>Harness the power of quantum computing to process and preserve neural patterns with unprecedented fidelity and complexity.</p>
+                </div>
+                <div class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="#00c853" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <h3>Digital Paradigm</h3>
+                    <p>Create an evolving digital consciousness that can interact with and influence future generations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="technology">
-        <h3>Our Technology</h3>
-        <p>Utilizing deep learning and high-resolution scans, we offer unparalleled accuracy in digital brain mapping.</p>
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Technology</h2>
+                <p>Pioneering the convergence of neuroscience and quantum computing</p>
+            </div>
+            <!-- Technology content here -->
+        </div>
     </section>
-    <section id="services">
-        <h3>Our Services</h3>
-        <p>From cognitive assessments to posthumous digital interactions, our services cater to your mental legacy needs.</p>
+
+    <section id="process">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Protocol</h2>
+                <p>Your path to cognitive transcendence in four phases</p>
+            </div>
+            <!-- Process content here -->
+        </div>
     </section>
-    <section id="contact">
-        <h3>Contact Us</h3>
-        <p>Email us at <a href="mailto:contact@neural.download">contact@neural.download</a> to learn more.</p>
-    </section>
+
     <footer>
-        <p>&copy; 2025 Neural Download. All rights reserved. | <a href="#privacy">Privacy Policy</a></p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#press">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#blog">Research Blog</a></li>
+                        <li><a href="#research">Scientific Papers</a></li>
+                        <li><a href="#documentation">Technical Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#compliance">Ethics & Compliance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:initiate@neuraldyne.com">initiate@neuraldyne.com</a></li>
+                        <li><a href="#support">Neural Support</a></li>
+                        <li><a href="#schedule">Schedule Assessment</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Neuraldyne Corporation. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
