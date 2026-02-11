@@ -336,6 +336,81 @@ footer {
 
 .footer-links a:hover { color: var(--text); }
 
+/* Animations */
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes draw-line {
+    from { width: 0; }
+    to { width: 24px; }
+}
+
+.hero-marker { animation: fade-in 0.8s ease-out; }
+.hero-marker::before { animation: draw-line 0.6s ease-out 0.3s both; }
+.hero-title { animation: fade-up 0.7s ease-out 0.15s both; }
+.hero-description { animation: fade-up 0.7s ease-out 0.3s both; }
+
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-stagger .pillar,
+.reveal-stagger .data-point,
+.reveal-stagger .infra-item,
+.reveal-stagger .contact-row {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal-stagger.visible .pillar,
+.reveal-stagger.visible .data-point,
+.reveal-stagger.visible .infra-item,
+.reveal-stagger.visible .contact-row {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-stagger.visible :nth-child(1) { transition-delay: 0s; }
+.reveal-stagger.visible :nth-child(2) { transition-delay: 0.1s; }
+.reveal-stagger.visible :nth-child(3) { transition-delay: 0.2s; }
+.reveal-stagger.visible :nth-child(4) { transition-delay: 0.3s; }
+
+/* Hero visual */
+.hero-visual {
+    position: absolute;
+    top: 50%;
+    right: -5%;
+    transform: translateY(-50%);
+    width: 480px;
+    height: 480px;
+    opacity: 0.07;
+    pointer-events: none;
+}
+
+.hero { position: relative; overflow: hidden; }
+
+@keyframes slow-rotate {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(360deg); }
+}
+
+.hero-visual { animation: slow-rotate 120s linear infinite; }
+
 /* Responsive */
 @media (max-width: 768px) {
     .mobile-nav-toggle { display: block; }
@@ -382,6 +457,34 @@ footer {
     </header>
 
     <section class="hero">
+        <svg class="hero-visual" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="200" cy="200" r="180" stroke="var(--primary)" stroke-width="0.5"/>
+            <circle cx="200" cy="200" r="140" stroke="var(--primary)" stroke-width="0.5"/>
+            <circle cx="200" cy="200" r="100" stroke="var(--primary)" stroke-width="0.5"/>
+            <circle cx="200" cy="200" r="60" stroke="var(--primary)" stroke-width="0.5"/>
+            <circle cx="200" cy="80" r="4" fill="var(--primary)"/>
+            <circle cx="320" cy="200" r="4" fill="var(--primary)"/>
+            <circle cx="200" cy="320" r="4" fill="var(--primary)"/>
+            <circle cx="80" cy="200" r="4" fill="var(--primary)"/>
+            <circle cx="270" cy="100" r="3" fill="var(--primary)"/>
+            <circle cx="310" cy="150" r="3" fill="var(--primary)"/>
+            <circle cx="130" cy="100" r="3" fill="var(--primary)"/>
+            <circle cx="90" cy="150" r="3" fill="var(--primary)"/>
+            <circle cx="270" cy="300" r="3" fill="var(--primary)"/>
+            <circle cx="130" cy="300" r="3" fill="var(--primary)"/>
+            <line x1="200" y1="80" x2="270" y2="100" stroke="var(--primary)" stroke-width="0.5"/>
+            <line x1="270" y1="100" x2="310" y2="150" stroke="var(--primary)" stroke-width="0.5"/>
+            <line x1="310" y1="150" x2="320" y2="200" stroke="var(--primary)" stroke-width="0.5"/>
+            <line x1="200" y1="80" x2="130" y2="100" stroke="var(--primary)" stroke-width="0.5"/>
+            <line x1="130" y1="100" x2="90" y2="150" stroke="var(--primary)" stroke-width="0.5"/>
+            <line x1="90" y1="150" x2="80" y2="200" stroke="var(--primary)" stroke-width="0.5"/>
+            <line x1="320" y1="200" x2="270" y2="300" stroke="var(--primary)" stroke-width="0.5"/>
+            <line x1="80" y1="200" x2="130" y2="300" stroke="var(--primary)" stroke-width="0.5"/>
+            <line x1="270" y1="300" x2="200" y2="320" stroke="var(--primary)" stroke-width="0.5"/>
+            <line x1="130" y1="300" x2="200" y2="320" stroke="var(--primary)" stroke-width="0.5"/>
+            <line x1="200" y1="80" x2="320" y2="200" stroke="var(--primary)" stroke-width="0.3" stroke-dasharray="4 4"/>
+            <line x1="80" y1="200" x2="200" y2="320" stroke="var(--primary)" stroke-width="0.3" stroke-dasharray="4 4"/>
+        </svg>
         <div class="container hero-content">
             <div class="hero-marker">Computational Neuroscience</div>
             <h1 class="hero-title">100,000 brains.<br><span>One model.</span></h1>
@@ -392,11 +495,11 @@ footer {
     <!-- Research -->
     <section id="research">
         <div class="container">
-            <div class="section-label">Research</div>
-            <h2 class="section-heading">We don't sell software. We build understanding.</h2>
-            <p class="section-text">Most neurotech companies ship dashboards. We simulate entire brains. Our research combines high-resolution fMRI, dense EEG, and diffusion imaging into individualized computational models that predict neural behavior before it happens.</p>
+            <div class="section-label reveal">Research</div>
+            <h2 class="section-heading reveal">We don't sell software. We build understanding.</h2>
+            <p class="section-text reveal">Most neurotech companies ship dashboards. We simulate entire brains. Our research combines high-resolution fMRI, dense EEG, and diffusion imaging into individualized computational models that predict neural behavior before it happens.</p>
 
-            <div class="pillars">
+            <div class="pillars reveal-stagger">
                 <div class="pillar">
                     <div class="pillar-label">Connectomics</div>
                     <h3>Whole-brain reconstruction</h3>
@@ -419,11 +522,11 @@ footer {
     <!-- Data -->
     <section id="data">
         <div class="container">
-            <div class="section-label">Data</div>
-            <h2 class="section-heading">The dataset nobody else has</h2>
-            <p class="section-text">Neuraldyne's proprietary brain scan archive is the foundation of everything we build. Consented, longitudinal, multi-modal. Collected over years across clinical and research partners. It cannot be scraped, licensed, or approximated.</p>
+            <div class="section-label reveal">Data</div>
+            <h2 class="section-heading reveal">The dataset nobody else has</h2>
+            <p class="section-text reveal">Neuraldyne's proprietary brain scan archive is the foundation of everything we build. Consented, longitudinal, multi-modal. Collected over years across clinical and research partners. It cannot be scraped, licensed, or approximated.</p>
 
-            <div class="data-points">
+            <div class="data-points reveal-stagger">
                 <div class="data-point">
                     <div class="data-value">100K+</div>
                     <div class="data-label">Individual brain scans<br>across modalities</div>
@@ -443,11 +546,11 @@ footer {
     <!-- Infrastructure -->
     <section id="infrastructure">
         <div class="container">
-            <div class="section-label">Infrastructure</div>
-            <h2 class="section-heading">Built for problems GPUs can't solve</h2>
-            <p class="section-text">Simulating a brain at biological fidelity requires compute architectures that don't exist in any cloud catalog. We build our own.</p>
+            <div class="section-label reveal">Infrastructure</div>
+            <h2 class="section-heading reveal">Built for problems GPUs can't solve</h2>
+            <p class="section-text reveal">Simulating a brain at biological fidelity requires compute architectures that don't exist in any cloud catalog. We build our own.</p>
 
-            <div class="infra-list">
+            <div class="infra-list reveal-stagger">
                 <div class="infra-item">
                     <div class="infra-name">Quantum-classical hybrid</div>
                     <div class="infra-desc">Variational quantum circuits handle the combinatorial explosion of synaptic state spaces. Classical GPUs handle everything else. Neither works alone.</div>
@@ -471,11 +574,11 @@ footer {
     <!-- Contact -->
     <section id="contact">
         <div class="container">
-            <div class="section-label">Contact</div>
-            <h2 class="section-heading">Research inquiries</h2>
-            <p class="section-text">We work with a small number of research institutions and clinical partners. If you have data, compute, or problems worth solving, we should talk.</p>
+            <div class="section-label reveal">Contact</div>
+            <h2 class="section-heading reveal">Research inquiries</h2>
+            <p class="section-text reveal">We work with a small number of research institutions and clinical partners. If you have data, compute, or problems worth solving, we should talk.</p>
 
-            <div style="max-width: 480px;">
+            <div style="max-width: 480px;" class="reveal-stagger">
                 <div class="contact-row">
                     <span class="contact-label">Research</span>
                     <span class="contact-value"><a href="mailto:research@neuraldyne.com">research@neuraldyne.com</a></span>
@@ -517,6 +620,16 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
         if (t) { nav.classList.remove('active'); t.scrollIntoView({ behavior: 'smooth' }); }
     });
 });
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
