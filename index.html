@@ -227,7 +227,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 32px;
-    max-width: calc(100% - 59px);
+    max-width: 100%;
     margin: 40px auto;
 }
 
@@ -429,29 +429,37 @@ footer {
         </div>
     </section>
 
-    <div class="features-grid">
-        <div class="feature-card">
-            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="#00c853" stroke-width="2">
-                <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
-            </svg>
-            <h3>Cesium Quantum Scanning</h3>
-            <p>Advanced quantum-pumped cesium gas arrays provide unprecedented neural activity detection accuracy through laser polarization technology.</p>
+    <section id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Core Technology</h2>
+                <p>Three pillars of our neural mapping platform</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="#00c853" stroke-width="2">
+                        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+                    </svg>
+                    <h3>Cesium Quantum Scanning</h3>
+                    <p>Advanced quantum-pumped cesium gas arrays provide unprecedented neural activity detection accuracy through laser polarization technology.</p>
+                </div>
+                <div class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="#00c853" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                    <h3>AI-Enhanced Processing</h3>
+                    <p>Deep learning models combine with quantum scanning data to create complete neural maps, utilizing pattern recognition for gap-filling and enhancement.</p>
+                </div>
+                <div class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="#00c853" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <h3>Digital Twin Creation</h3>
+                    <p>Generate detailed virtual representations of your neural patterns for medical analysis, cognitive enhancement, and future preservation.</p>
+                </div>
+            </div>
         </div>
-        <div class="feature-card">
-            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="#00c853" stroke-width="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-            </svg>
-            <h3>AI-Enhanced Processing</h3>
-            <p>Deep learning models combine with quantum scanning data to create complete neural maps, utilizing pattern recognition for gap-filling and enhancement.</p>
-        </div>
-        <div class="feature-card">
-            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="#00c853" stroke-width="2">
-                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
-            </svg>
-            <h3>Digital Twin Creation</h3>
-            <p>Generate detailed virtual representations of your neural patterns for medical analysis, cognitive enhancement, and future preservation.</p>
-        </div>
-    </div>
+    </section>
 
     <section id="investment">
         <div class="container">
@@ -575,7 +583,7 @@ footer {
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Neuraldyne Corporation. All rights reserved.</p>
+                <p>&copy; 2026 Neuraldyne Corporation. All rights reserved.</p>
             </div>
         </div>
     </footer>
